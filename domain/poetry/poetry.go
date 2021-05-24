@@ -1,7 +1,6 @@
 package poetry
 
 import (
-	"fmt"
 	"strings"
 )
 
@@ -12,6 +11,11 @@ import (
 // IObtainPoem obtain poems from a library or storage (right-side)
 type IObtainPoem interface {
 	GetAPoem() string
+}
+
+// IRequestVerses request a poem to the domain layer (left-side)
+type IRequestVerses interface {
+	GiveMeSomePoetry() string
 }
 
 //---------------------------------------------------------------------------------------
@@ -32,10 +36,4 @@ func NewReader(library IObtainPoem) Reader {
 func (r Reader) GiveMeSomePoetry() string {
 	poem := r.library.GetAPoem()
 	return strings.ToUpper(poem)
-}
-
-// Ask print a random poem
-func (r Reader) Ask() {
-	fmt.Println("Here is some poetry:")
-	fmt.Println(r.GiveMeSomePoetry())
 }
