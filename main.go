@@ -3,12 +3,12 @@ package main
 import (
 	"github.com/AJRDRGZ/hexagonal-architecture/domain/poetry"
 	"github.com/AJRDRGZ/hexagonal-architecture/infrastructure/console"
-	"github.com/AJRDRGZ/hexagonal-architecture/infrastructure/postgres"
+	"github.com/AJRDRGZ/hexagonal-architecture/infrastructure/jsonservice"
 )
 
 func main() {
 	// 1. Instantiate right-side adapters
-	poetryLibrary := postgres.New()
+	poetryLibrary := jsonservice.New("./poems.json")
 
 	// 2. Instantiate the hexagon
 	poetryReader := poetry.NewReader(poetryLibrary)
