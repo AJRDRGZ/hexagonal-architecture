@@ -4,16 +4,16 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/AJRDRGZ/hexagonal-architecture/storage"
+	"github.com/AJRDRGZ/hexagonal-architecture/infrastructure/postgres"
 )
 
 // Reader is the object that read the poetries
 type Reader struct {
-	library storage.Postgres
+	library postgres.Storage
 }
 
 // NewReader returs a new Reader of poems
-func NewReader(library storage.Postgres) Reader {
+func NewReader(library postgres.Storage) Reader {
 	return Reader{library}
 }
 

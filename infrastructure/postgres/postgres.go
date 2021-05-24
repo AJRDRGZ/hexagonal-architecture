@@ -1,4 +1,4 @@
-package storage
+package postgres
 
 import (
 	"database/sql"
@@ -15,17 +15,17 @@ var (
 	once sync.Once
 )
 
-// Postgres storage
-type Postgres struct{}
+// Storage storage
+type Storage struct{}
 
 // New returns a new Postgres
-func New() Postgres {
+func New() Storage {
 	getInstance()
-	return Postgres{}
+	return Storage{}
 }
 
 // GetAPoem returns a random poem
-func (p Postgres) GetAPoem() string {
+func (s Storage) GetAPoem() string {
 	stmt, err := db.Prepare("SELECT poem FROM library WHERE id = $1")
 	if err != nil {
 		log.Fatal(err)
