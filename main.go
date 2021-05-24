@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	// 1. Instantiate right-side adapters (I want to go out)
+	// 1. Instantiate right-side adapters
 	poetryLibrary := postgres.New()
 
 	// 2. Instantiate the hexagon
