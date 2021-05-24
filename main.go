@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/AJRDRGZ/hexagonal-architecture/domain/poetry"
-	"github.com/AJRDRGZ/hexagonal-architecture/infrastructure/console"
+	"github.com/AJRDRGZ/hexagonal-architecture/infrastructure/echo"
 	"github.com/AJRDRGZ/hexagonal-architecture/infrastructure/jsonservice"
 )
 
@@ -14,9 +14,9 @@ func main() {
 	poetryReader := poetry.NewReader(poetryLibrary)
 
 	// 3. Instantiate the left-side adapter(s)
-	consoleAdapter := console.New(poetryReader)
+	apiAdapter := echo.New(poetryReader)
 
-	consoleAdapter.Ask()
+	apiAdapter.Start(":1234")
 
 	// NOTE:
 	// El adaptador de Izquierda (consoleAdapter) MANEJA la lógica de negocio (poetryReader),
